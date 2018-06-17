@@ -2,24 +2,24 @@ Visual Storytelling
 =======
 In visual storytelling tasks, we generate stories for given image sequences. This project implements two visual storytelling models. The first model is called direct link model, for it trains and predicts each image separately. Linking sentence for each image in the image sequence sequentially, we get a story for this image sequence. The second model is called image context model, for it considers information in both current image and its former image in the image sequence.
 
-#model
-In this project models are designed and implemented basing on [NIC](https://arxiv.org/abs/1609.06647) and [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt)
+# model
+In this project models are designed and implemented basing on [NIC] (https://arxiv.org/abs/1609.06647) and [https://github.com/tensorflow/models/tree/master/research/im2txt] (https://github.com/tensorflow/models/tree/master/research/im2txt)
 You may read the paper and visit the website for more information.
 
-##Direct link model
-![Direct Link Model](https://github.com/cccchang/visualstorytelling/images/direct link model.jpg)
+## Direct link model
+![Direct Link Model] (https://github.com/cccchang/visualstorytelling/images/direct link model.jpg)
 
-##Image Context model
-![Image Context Model](https://github.com/cccchang/visualstorytelling/images/image context model.jpg)
+## Image Context model
+![Image Context Model] (https://github.com/cccchang/visualstorytelling/images/image context model.jpg)
 
-#Getting Started
-##A Note on Hardware and Training Time
+# Getting Started
+## A Note on Hardware and Training Time
 This project is experimented on Nvidia Tesla P100. Using one GPU, initial training of a direct link model cost around a week and fine tuning of a direct link model cost around two weeks. Training time of a image context model is nearly 1.8 times of a direct link model.
 
-##Install Required Packages
-Please see [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt) 
+## Install Required Packages
+Please see [https://github.com/tensorflow/models/tree/master/research/im2txt] (https://github.com/tensorflow/models/tree/master/research/im2txt) 
 
-##Prepare the Training Data
+## Prepare the Training Data
 In this process, we used only 5 of 12 splits of VIST training dataset. The 5 splits and the TFRecord files of them cost around 250G. Before running the script, ensure you have enough space on your devices.
 ```Bash
 #Location to save the VIST data
@@ -33,7 +33,7 @@ bazel build //im2story:preprocess_vist
 bazel-bin/im2story/preprocess_vist "${VIST_DIR}"
 ```
 
-##Download the Inception v3 Checkpoint
+## Download the Inception v3 Checkpoint
 ```Bash
 #Loction to save Inception v3 checkpoint.
 INCEPTION_DIR = "${HOME}/im2story/data"
@@ -44,8 +44,8 @@ tar -xvf "inception_v3_2016_08_28.tar.gz" -C ${INCEPTION_DIR}
 rm "inception_v3_2016_08_28.tar.gz" 
 ```
 
-#Training a Model
-##Initial Training
+# Training a Model
+## Initial Training
 ```Bash
 # Directory containing preprocessed VIST data.
 VIST_DIR="$/raid/chuchang/vist"
@@ -68,7 +68,7 @@ bazel-bin/im2story/train \
   --train_inception=false \
   --number_of_steps=1000000
 ```
-##Fine Tuning
+## Fine Tuning
 ```Bash
 # Restart the training script with --train_inception=true.
 bazel-bin/im2story/train \
@@ -77,7 +77,7 @@ bazel-bin/im2story/train \
   --train_inception=true \
   --number_of_steps=3000000 
 ```
-#Generating Stories
+# Generating Stories
 ```Bash
 # Path to checkpoint file or a directory containing checkpoint files. Passing
 # a directory will only work if there is also a file named 'checkpoint' which
