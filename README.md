@@ -3,15 +3,15 @@ Visual Storytelling
 In visual storytelling tasks, we generate stories for given image sequences. This project implements two visual storytelling models. The first model is called direct link model, for it trains and predicts each image separately. Linking sentence for each image in the image sequence sequentially, we get a story for this image sequence. The second model is called image context model, for it considers information in both current image and its former image in the image sequence.
 
 # model
-In this project models are designed basing on [NIC](https://arxiv.org/abs/1609.06647)
-And the code is based on [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt)
+In this project models are designed basing on [NIC](https://arxiv.org/abs/1609.06647)   
+The code is based on [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt)     
 You may read the paper and visit the website for more information.
 
 ## Direct link model
-![Direct Link Model](https://github.com/cccchang/visualstorytelling/images/direct link model.png)
+![Direct Link Model](https://github.com/cccchang/visualstorytelling/blob/master/images/direct_link_model.png)
 
 ## Image Context model
-![Image Context Model](https://github.com/cccchang/visualstorytelling/images/image context model.png)
+![Image Context Model](https://github.com/cccchang/visualstorytelling/blob/master/images/image_context_model.png)
 
 # Getting Started
 ## A Note on Hardware and Training Time
@@ -110,6 +110,6 @@ bazel-bin/im2story/run_inference \
 
 # Results
 In the results, the direct link model went through 800000 steps of initial training and 1500000 steps of fine tuning. While the image context model only went through 800000 steps of initial training and 600000 steps of fine tuning.
-![example1](https://github.com/cccchang/visualstorytelling/images/example1.png)
-![example2](https://github.com/cccchang/visualstorytelling/images/example2.png)
-![example3](https://github.com/cccchang/visualstorytelling/images/example3.png)
+![example1](https://github.com/cccchang/visualstorytelling/blob/master/images/example1.png)
+![example2](https://github.com/cccchang/visualstorytelling/blob/master/images/example2.png)
+![example3](https://github.com/cccchang/visualstorytelling/blob/master/images/example3.png)
