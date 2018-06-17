@@ -3,21 +3,22 @@ Visual Storytelling
 In visual storytelling tasks, we generate stories for given image sequences. This project implements two visual storytelling models. The first model is called direct link model, for it trains and predicts each image separately. Linking sentence for each image in the image sequence sequentially, we get a story for this image sequence. The second model is called image context model, for it considers information in both current image and its former image in the image sequence.
 
 # model
-In this project models are designed and implemented basing on [NIC](https://arxiv.org/abs/1609.06647) and [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt)
+In this project models are designed basing on [NIC](https://arxiv.org/abs/1609.06647)
+And the code is based on [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt)
 You may read the paper and visit the website for more information.
 
 ## Direct link model
-![Direct Link Model](https://github.com/cccchang/visualstorytelling/images/direct link model.jpg)
+![Direct Link Model](https://github.com/cccchang/visualstorytelling/images/direct link model.png)
 
 ## Image Context model
-![Image Context Model](https://github.com/cccchang/visualstorytelling/images/image context model.jpg)
+![Image Context Model](https://github.com/cccchang/visualstorytelling/images/image context model.png)
 
 # Getting Started
 ## A Note on Hardware and Training Time
 This project is experimented on Nvidia Tesla P100. Using one GPU, initial training of a direct link model cost around a week and fine tuning of a direct link model cost around two weeks. Training time of a image context model is nearly 1.8 times of a direct link model.
 
 ## Install Required Packages
-Please see [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt) 
+Please see [https://github.com/tensorflow/models/tree/master/research/im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt) for the information.
 
 ## Prepare the Training Data
 In this process, we used only 5 of 12 splits of VIST training dataset. The 5 splits and the TFRecord files of them cost around 250G. Before running the script, ensure you have enough space on your devices.
@@ -106,3 +107,9 @@ bazel-bin/im2story/run_inference \
   --vocab_file=${VOCAB_FILE} \
   --input_files=${IMAGE_FILE}
 ```
+
+# Results
+In the results, the direct link model went through 800000 steps of initial training and 1500000 steps of fine tuning. While the image context model only went through 800000 steps of initial training and 600000 steps of fine tuning.
+![example1](https://github.com/cccchang/visualstorytelling/images/example1.png)
+![example2](https://github.com/cccchang/visualstorytelling/images/example2.png)
+![example3](https://github.com/cccchang/visualstorytelling/images/example3.png)
